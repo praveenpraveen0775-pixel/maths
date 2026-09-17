@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Quiz | N. Praveen Kumar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 780px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== ENTRY PAGE ========== */
+        #entry-page {
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        #entry-page h1 {
+            font-size: 2.4rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        #entry-page .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+
+        .student-card {
+            background: linear-gradient(135deg, #f0f4ff, #e8eeff);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .student-card p {
+            font-size: 1.2rem;
+            margin: 12px 0;
+            color: #333;
+        }
+
+        .student-card span {
+            font-weight: 600;
+            color: #5a67d8;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 16px 55px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        /* ========== QUIZ PAGE ========== */
+        #quiz-page {
+            display: none;
+        }
+
+        .top-bar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .quiz-content {
+            padding: 30px 40px 40px;
+        }
+
+        .progress-container {
+            margin-bottom: 25px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+            width: 2.5%;
+        }
+
+        .question-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.35rem;
+            color: #1a1a2e;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 14px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.05rem;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .option-letter {
+            width: 32px;
+            height: 32px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #4a5568;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 13px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #prev-btn {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        #prev-btn:hover {
+            background: #cbd5e1;
+        }
+
+        #next-btn, #submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.35);
+        }
+
+        #next-btn:hover, #submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.45);
+        }
+
+        #submit-btn {
+            display: none;
+        }
+
+        /* ========== RESULT PAGE ========== */
+        #result-page {
+            display: none;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        #result-page h1 {
+            font-size: 2.2rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .score-box {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+            color: white;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .score-box .number {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .score-box .label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .result-message {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ========== ENTRY PAGE ========== -->
+        <div id="entry-page">
+            <div class="logo">∑</div>
+            <h1>Mathematics Quiz</h1>
+            <p class="subtitle">40 Questions • Test Your Skills</p>
+
+            <div class="student-card">
+                <p>👤 Name : <span>N. Praveen Kumar</span></p>
+                <p>🎫 Roll No : <span>26PCS154</span></p>
+            </div>
+
+            <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+        </div>
+
+        <!-- ========== QUIZ PAGE ========== -->
+        <div id="quiz-page">
+            <div class="top-bar">
+                <span>N. Praveen Kumar</span>
+                <span>26PCS154</span>
+            </div>
+
+            <div class="quiz-content">
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Question <strong id="q-num">1</strong> of 40</span>
+                        <span id="progress-percent">2.5%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <div class="question-number">Question <span id="q-number">1</span></div>
+                    <div class="question-text" id="question-text"></div>
+                    <div class="options" id="options-container"></div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">← Previous</button>
+                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
+                    <button class="nav-btn" id="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== RESULT PAGE ========== -->
+        <div id="result-page">
+            <div class="top-bar" style="border-radius: 0;">
+                <span>N. Praveen Kumar</span>
+                <span>26PCS154</span>
+            </div>
+
+            <div style="padding: 40px;">
+                <div class="result-icon" id="result-icon">🎉</div>
+                <h1>Quiz Completed!</h1>
+
+                <div class="score-box">
+                    <div class="number" id="score-value">0</div>
+                    <div class="label">out of 40</div>
+                </div>
+
+                <p class="result-message" id="result-message"></p>
+
+                <button class="restart-btn" onclick="restartQuiz()">🔄 Restart Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "What is 15 + 27?", options: ["40", "42", "41", "43"], answer: 1 },
+            { q: "What is 9 × 8?", options: ["64", "72", "81", "70"], answer: 1 },
+            { q: "What is 144 ÷ 12?", options: ["10", "11", "12", "13"], answer: 2 },
+            { q: "What is the square of 13?", options: ["156", "169", "149", "179"], answer: 1 },
+            { q: "What is 25% of 200?", options: ["40", "50", "25", "60"], answer: 1 },
+            { q: "Simplify: 3² + 4²", options: ["12", "25", "7", "49"], answer: 1 },
+            { q: "Approximate value of π is", options: ["3.12", "3.14", "3.16", "3.18"], answer: 1 },
+            { q: "LCM of 4 and 6 is", options: ["12", "24", "8", "10"], answer: 0 },
+            { q: "What is 7³?", options: ["243", "343", "294", "321"], answer: 1 },
+            { q: "Solve: 5x = 45", options: ["x = 7", "x = 8", "x = 9", "x = 10"], answer: 2 },
+            { q: "Perimeter of a square with side 9 cm", options: ["18 cm", "36 cm", "27 cm", "81 cm"], answer: 1 },
+            { q: "Area of rectangle (length 12, breadth 5)", options: ["50", "60", "17", "34"], answer: 1 },
+            { q: "0.75 as a fraction is", options: ["1/2", "3/4", "2/3", "4/5"], answer: 1 },
+            { q: "HCF of 18 and 24 is", options: ["3", "6", "9", "12"], answer: 1 },
+            { q: "What is 2⁵?", options: ["16", "32", "64", "8"], answer: 1 },
+            { q: "Solve: 3x + 5 = 20", options: ["x = 5", "x = 4", "x = 6", "x = 3"], answer: 0 },
+            { q: "Cube root of 125 is", options: ["4", "5", "6", "25"], answer: 1 },
+            { q: "3/5 as percentage is", options: ["50%", "60%", "75%", "30%"], answer: 1 },
+            { q: "What is 11 × 11?", options: ["111", "121", "131", "101"], answer: 1 },
+            { q: "Average of 10, 20, 30, 40 is", options: ["20", "25", "30", "35"], answer: 1 },
+            { q: "1000 − 437 =", options: ["563", "573", "553", "543"], answer: 0 },
+            { q: "√81 =", options: ["7", "8", "9", "10"], answer: 2 },
+            { q: "6! (factorial) is", options: ["120", "720", "360", "24"], answer: 1 },
+            { q: "Solve: 2x − 7 = 11", options: ["x = 7", "x = 8", "x = 9", "x = 10"], answer: 2 },
+            { q: "Area of circle with radius 7 (π = 22/7)", options: ["154", "144", "164", "174"], answer: 0 },
+            { q: "15% of 80 is", options: ["10", "12", "15", "16"], answer: 1 },
+            { q: "Next number: 2, 4, 8, 16, ?", options: ["24", "32", "30", "20"], answer: 1 },
+            { q: "5² − 3² =", options: ["16", "25", "8", "34"], answer: 0 },
+            { q: "0.2 as a fraction is", options: ["1/2", "1/5", "1/4", "2/5"], answer: 1 },
+            { q: "9 × 12 =", options: ["98", "108", "118", "96"], answer: 1 },
+            { q: "Solve: x/4 = 7", options: ["x = 21", "x = 28", "x = 24", "x = 35"], answer: 1 },
+            { q: "Perimeter of rectangle (l=15, b=8)", options: ["46", "23", "120", "38"], answer: 0 },
+            { q: "2³ × 3² =", options: ["36", "72", "18", "54"], answer: 1 },
+            { q: "1/4 of 96 is", options: ["20", "24", "28", "32"], answer: 1 },
+            { q: "Square root of 256 is", options: ["14", "15", "16", "18"], answer: 2 },
+            { q: "8 + 2 × 5 =", options: ["50", "18", "40", "16"], answer: 1 },
+            { q: "45 ÷ 5 × 3 =", options: ["9", "15", "27", "30"], answer: 2 },
+            { q: "Median of 3, 7, 9, 11, 15 is", options: ["7", "9", "11", "15"], answer: 1 },
+            { q: "100 × 0.25 =", options: ["20", "25", "30", "40"], answer: 1 },
+            { q: "Solve: 4x + 3 = 19", options: ["x = 3", "x = 4", "x = 5", "x = 6"], answer: 1 }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = new Array(40).fill(null);
+
+        function startQuiz() {
+            document.getElementById('entry-page').style.display = 'none';
+            document.getElementById('quiz-page').style.display = 'block';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            document.getElementById('q-num').textContent = currentQuestion + 1;
+            document.getElementById('q-number').textContent = currentQuestion + 1;
+            document.getElementById('question-text').textContent = q.q;
+
+            // Progress bar
+            const percent = ((currentQuestion + 1) / 40 * 100).toFixed(1);
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('progress-percent').textContent = percent + '%';
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'option' + (userAnswers[currentQuestion] === index ? ' selected' : '');
+                div.innerHTML = `
+                    <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+                    <span>${opt}</span>
+                `;
+                div.onclick = () => selectOption(index);
+                optionsContainer.appendChild(div);
+            });
+
+            // Buttons
+            document.getElementById('prev-btn').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
+            document.getElementById('next-btn').style.display = currentQuestion === 39 ? 'none' : 'inline-block';
+            document.getElementById('submit-btn').style.display = currentQuestion === 39 ? 'inline-block' : 'none';
+        }
+
+        function selectOption(index) {
+            userAnswers[currentQuestion] = index;
+            showQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 39) {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            userAnswers.forEach((ans, i) => {
+                if (ans === questions[i].answer) score++;
+            });
+
+            document.getElementById('quiz-page').style.display = 'none';
+            document.getElementById('result-page').style.display = 'block';
+            document.getElementById('score-value').textContent = score;
+
+            let message = '';
+            let icon = '';
+
+            if (score >= 36) {
+                message = "Outstanding! You are a Maths Champion! 🏆";
+                icon = "🏆";
+            } else if (score >= 28) {
+                message = "Excellent work! Keep it up! 🌟";
+                icon = "🌟";
+            } else if (score >= 20) {
+                message = "Good effort! Practice a bit more. 👍";
+                icon = "👍";
+            } else {
+                message = "Don't worry! Practice makes perfect. 💪";
+                icon = "💪";
+            }
+
+            document.getElementById('result-message').textContent = message;
+            document.getElementById('result-icon').textContent = icon;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            userAnswers = new Array(40).fill(null);
+            document.getElementById('result-page').style.display = 'none';
+            document.getElementById('entry-page').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
