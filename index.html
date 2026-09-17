@@ -2,220 +2,223 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Maths Quiz | N. Praveen Kumar</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
-
+        
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 12px;
         }
-
+        
         .container {
             width: 100%;
             max-width: 780px;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+            border-radius: 18px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            animation: fadeIn 0.6s ease;
+            animation: fadeIn 0.5s ease;
         }
-
+        
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* ========== ENTRY PAGE ========== */
         #entry-page {
-            padding: 50px 40px;
+            padding: 35px 22px;
             text-align: center;
         }
-
+        
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 36px;
+            margin: 0 auto 16px;
+            font-size: 32px;
             color: white;
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 18px rgba(102, 126, 234, 0.4);
         }
-
+        
         #entry-page h1 {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             color: #1a1a2e;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
-
+        
         #entry-page .subtitle {
             color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 35px;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
         }
-
+        
         .student-card {
             background: linear-gradient(135deg, #f0f4ff, #e8eeff);
             border: 2px solid #667eea;
-            border-radius: 16px;
-            padding: 25px 30px;
-            margin-bottom: 40px;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 30px;
             text-align: left;
         }
-
+        
         .student-card p {
-            font-size: 1.2rem;
-            margin: 12px 0;
+            font-size: 1.05rem;
+            margin: 10px 0;
             color: #333;
         }
-
+        
         .student-card span {
             font-weight: 600;
             color: #5a67d8;
         }
-
+        
         .start-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 16px 55px;
-            font-size: 1.2rem;
+            padding: 15px 40px;
+            font-size: 1.1rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            width: 100%;
+            max-width: 280px;
         }
-
-        .start-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.5);
+        
+        .start-btn:active {
+            transform: scale(0.97);
         }
 
         /* ========== QUIZ PAGE ========== */
         #quiz-page {
             display: none;
         }
-
+        
         .top-bar {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
-
+        
         .quiz-content {
-            padding: 30px 40px 40px;
+            padding: 20px 16px 28px;
         }
-
+        
         .progress-container {
-            margin-bottom: 25px;
+            margin-bottom: 18px;
         }
-
+        
         .progress-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
             color: #555;
         }
-
+        
         .progress-bar {
-            height: 10px;
+            height: 8px;
             background: #e2e8f0;
             border-radius: 10px;
             overflow: hidden;
         }
-
+        
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea, #764ba2);
             border-radius: 10px;
             transition: width 0.4s ease;
-            width: 2.5%;
+            width: 5%;
         }
-
+        
         .question-card {
             background: #f8fafc;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 30px;
+            border-radius: 14px;
+            padding: 18px 16px;
+            margin-bottom: 22px;
             border: 1px solid #e2e8f0;
         }
-
+        
         .question-number {
             display: inline-block;
             background: #667eea;
             color: white;
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-
+        
         .question-text {
-            font-size: 1.35rem;
+            font-size: 1.1rem;
             color: #1a1a2e;
             font-weight: 500;
-            line-height: 1.5;
-            margin-bottom: 25px;
+            line-height: 1.45;
+            margin-bottom: 18px;
         }
-
+        
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
-
+        
         .option {
             background: white;
             border: 2px solid #e2e8f0;
-            padding: 14px 20px;
+            padding: 13px 14px;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 14px;
-            font-size: 1.05rem;
+            gap: 12px;
+            font-size: 0.98rem;
+            min-height: 52px;
         }
-
-        .option:hover {
-            border-color: #667eea;
-            background: #f0f4ff;
-            transform: translateX(5px);
+        
+        .option:active {
+            transform: scale(0.98);
         }
-
+        
         .option.selected {
             border-color: #667eea;
             background: linear-gradient(135deg, #eef2ff, #e0e7ff);
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
         }
-
+        
         .option-letter {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             background: #e2e8f0;
             border-radius: 50%;
             display: flex;
@@ -224,49 +227,51 @@
             font-weight: 600;
             color: #4a5568;
             flex-shrink: 0;
+            font-size: 0.9rem;
         }
-
+        
         .option.selected .option-letter {
             background: #667eea;
             color: white;
         }
-
+        
         .nav-buttons {
             display: flex;
             justify-content: space-between;
-            gap: 15px;
+            gap: 12px;
         }
-
+        
         .nav-btn {
-            padding: 13px 30px;
+            padding: 13px 20px;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
+            flex: 1;
+            min-height: 48px;
         }
-
+        
         #prev-btn {
             background: #e2e8f0;
             color: #4a5568;
         }
-
-        #prev-btn:hover {
+        
+        #prev-btn:active {
             background: #cbd5e1;
         }
-
+        
         #next-btn, #submit-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.35);
+            box-shadow: 0 5px 14px rgba(102, 126, 234, 0.35);
         }
-
-        #next-btn:hover, #submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.45);
+        
+        #next-btn:active, #submit-btn:active {
+            transform: scale(0.97);
         }
-
+        
         #submit-btn {
             display: none;
         }
@@ -274,92 +279,136 @@
         /* ========== RESULT PAGE ========== */
         #result-page {
             display: none;
-            padding: 50px 40px;
+        }
+        
+        .result-content {
+            padding: 28px 18px 36px;
             text-align: center;
         }
-
+        
         .result-icon {
-            font-size: 70px;
-            margin-bottom: 15px;
-        }
-
-        #result-page h1 {
-            font-size: 2.2rem;
-            color: #1a1a2e;
+            font-size: 58px;
             margin-bottom: 10px;
         }
-
+        
+        #result-page h1 {
+            font-size: 1.6rem;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        
         .score-box {
-            width: 180px;
-            height: 180px;
+            width: 145px;
+            height: 145px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 30px auto;
+            margin: 22px auto 18px;
             color: white;
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 28px rgba(102, 126, 234, 0.4);
             animation: pulse 2s infinite;
         }
-
+        
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
         }
-
+        
         .score-box .number {
-            font-size: 3.2rem;
+            font-size: 2.6rem;
             font-weight: 700;
             line-height: 1;
         }
-
+        
         .score-box .label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
+            margin-top: 2px;
         }
 
+        /* Marks Output Card */
+        .marks-card {
+            background: #f0f4ff;
+            border: 2px solid #667eea;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin: 0 auto 20px;
+            max-width: 300px;
+            text-align: left;
+        }
+        
+        .marks-card p {
+            font-size: 1.05rem;
+            margin: 8px 0;
+            color: #333;
+        }
+        
+        .marks-card span {
+            font-weight: 600;
+            color: #5a67d8;
+        }
+        
         .result-message {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: #4a5568;
-            margin-bottom: 35px;
+            margin-bottom: 26px;
             font-weight: 500;
+            padding: 0 8px;
+            line-height: 1.4;
         }
-
+        
         .restart-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 15px 45px;
-            font-size: 1.1rem;
+            padding: 14px 36px;
+            font-size: 1.05rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 18px rgba(102, 126, 234, 0.4);
+            width: 100%;
+            max-width: 260px;
+        }
+        
+        .restart-btn:active {
+            transform: scale(0.97);
         }
 
-        .restart-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.5);
+        /* Extra small phones */
+        @media (max-width: 380px) {
+            #entry-page h1 {
+                font-size: 1.6rem;
+            }
+            .question-text {
+                font-size: 1.02rem;
+            }
+            .option {
+                font-size: 0.92rem;
+                padding: 12px 12px;
+            }
+            .nav-btn {
+                font-size: 0.9rem;
+                padding: 12px 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-
         <!-- ========== ENTRY PAGE ========== -->
         <div id="entry-page">
             <div class="logo">∑</div>
             <h1>Mathematics Quiz</h1>
-            <p class="subtitle">40 Questions • Test Your Skills</p>
-
+            <p class="subtitle">Unit III & IV • 20 Questions<br>Trees & Boolean Algebra</p>
             <div class="student-card">
                 <p>👤 Name : <span>N. Praveen Kumar</span></p>
                 <p>🎫 Roll No : <span>26PCS154</span></p>
             </div>
-
             <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
         </div>
 
@@ -369,24 +418,21 @@
                 <span>N. Praveen Kumar</span>
                 <span>26PCS154</span>
             </div>
-
             <div class="quiz-content">
                 <div class="progress-container">
                     <div class="progress-info">
-                        <span>Question <strong id="q-num">1</strong> of 40</span>
-                        <span id="progress-percent">2.5%</span>
+                        <span>Question <strong id="q-num">1</strong> of 20</span>
+                        <span id="progress-percent">5%</span>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
                     </div>
                 </div>
-
                 <div class="question-card">
                     <div class="question-number">Question <span id="q-number">1</span></div>
                     <div class="question-text" id="question-text"></div>
                     <div class="options" id="options-container"></div>
                 </div>
-
                 <div class="nav-buttons">
                     <button class="nav-btn" id="prev-btn" onclick="prevQuestion()">← Previous</button>
                     <button class="nav-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
@@ -397,22 +443,26 @@
 
         <!-- ========== RESULT PAGE ========== -->
         <div id="result-page">
-            <div class="top-bar" style="border-radius: 0;">
+            <div class="top-bar">
                 <span>N. Praveen Kumar</span>
                 <span>26PCS154</span>
             </div>
-
-            <div style="padding: 40px;">
+            <div class="result-content">
                 <div class="result-icon" id="result-icon">🎉</div>
                 <h1>Quiz Completed!</h1>
-
+                
                 <div class="score-box">
                     <div class="number" id="score-value">0</div>
-                    <div class="label">out of 40</div>
+                    <div class="label">out of 20</div>
+                </div>
+
+                <!-- Marks Output -->
+                <div class="marks-card">
+                    <p>📊 Marks Obtained : <span id="marks-text">0 / 20</span></p>
+                    <p>📈 Percentage : <span id="percent-text">0%</span></p>
                 </div>
 
                 <p class="result-message" id="result-message"></p>
-
                 <button class="restart-btn" onclick="restartQuiz()">🔄 Restart Quiz</button>
             </div>
         </div>
@@ -420,50 +470,32 @@
 
     <script>
         const questions = [
-            { q: "What is 15 + 27?", options: ["40", "42", "41", "43"], answer: 1 },
-            { q: "What is 9 × 8?", options: ["64", "72", "81", "70"], answer: 1 },
-            { q: "What is 144 ÷ 12?", options: ["10", "11", "12", "13"], answer: 2 },
-            { q: "What is the square of 13?", options: ["156", "169", "149", "179"], answer: 1 },
-            { q: "What is 25% of 200?", options: ["40", "50", "25", "60"], answer: 1 },
-            { q: "Simplify: 3² + 4²", options: ["12", "25", "7", "49"], answer: 1 },
-            { q: "Approximate value of π is", options: ["3.12", "3.14", "3.16", "3.18"], answer: 1 },
-            { q: "LCM of 4 and 6 is", options: ["12", "24", "8", "10"], answer: 0 },
-            { q: "What is 7³?", options: ["243", "343", "294", "321"], answer: 1 },
-            { q: "Solve: 5x = 45", options: ["x = 7", "x = 8", "x = 9", "x = 10"], answer: 2 },
-            { q: "Perimeter of a square with side 9 cm", options: ["18 cm", "36 cm", "27 cm", "81 cm"], answer: 1 },
-            { q: "Area of rectangle (length 12, breadth 5)", options: ["50", "60", "17", "34"], answer: 1 },
-            { q: "0.75 as a fraction is", options: ["1/2", "3/4", "2/3", "4/5"], answer: 1 },
-            { q: "HCF of 18 and 24 is", options: ["3", "6", "9", "12"], answer: 1 },
-            { q: "What is 2⁵?", options: ["16", "32", "64", "8"], answer: 1 },
-            { q: "Solve: 3x + 5 = 20", options: ["x = 5", "x = 4", "x = 6", "x = 3"], answer: 0 },
-            { q: "Cube root of 125 is", options: ["4", "5", "6", "25"], answer: 1 },
-            { q: "3/5 as percentage is", options: ["50%", "60%", "75%", "30%"], answer: 1 },
-            { q: "What is 11 × 11?", options: ["111", "121", "131", "101"], answer: 1 },
-            { q: "Average of 10, 20, 30, 40 is", options: ["20", "25", "30", "35"], answer: 1 },
-            { q: "1000 − 437 =", options: ["563", "573", "553", "543"], answer: 0 },
-            { q: "√81 =", options: ["7", "8", "9", "10"], answer: 2 },
-            { q: "6! (factorial) is", options: ["120", "720", "360", "24"], answer: 1 },
-            { q: "Solve: 2x − 7 = 11", options: ["x = 7", "x = 8", "x = 9", "x = 10"], answer: 2 },
-            { q: "Area of circle with radius 7 (π = 22/7)", options: ["154", "144", "164", "174"], answer: 0 },
-            { q: "15% of 80 is", options: ["10", "12", "15", "16"], answer: 1 },
-            { q: "Next number: 2, 4, 8, 16, ?", options: ["24", "32", "30", "20"], answer: 1 },
-            { q: "5² − 3² =", options: ["16", "25", "8", "34"], answer: 0 },
-            { q: "0.2 as a fraction is", options: ["1/2", "1/5", "1/4", "2/5"], answer: 1 },
-            { q: "9 × 12 =", options: ["98", "108", "118", "96"], answer: 1 },
-            { q: "Solve: x/4 = 7", options: ["x = 21", "x = 28", "x = 24", "x = 35"], answer: 1 },
-            { q: "Perimeter of rectangle (l=15, b=8)", options: ["46", "23", "120", "38"], answer: 0 },
-            { q: "2³ × 3² =", options: ["36", "72", "18", "54"], answer: 1 },
-            { q: "1/4 of 96 is", options: ["20", "24", "28", "32"], answer: 1 },
-            { q: "Square root of 256 is", options: ["14", "15", "16", "18"], answer: 2 },
-            { q: "8 + 2 × 5 =", options: ["50", "18", "40", "16"], answer: 1 },
-            { q: "45 ÷ 5 × 3 =", options: ["9", "15", "27", "30"], answer: 2 },
-            { q: "Median of 3, 7, 9, 11, 15 is", options: ["7", "9", "11", "15"], answer: 1 },
-            { q: "100 × 0.25 =", options: ["20", "25", "30", "40"], answer: 1 },
-            { q: "Solve: 4x + 3 = 19", options: ["x = 3", "x = 4", "x = 5", "x = 6"], answer: 1 }
+            // ===== UNIT III – TREES =====
+            { q: "A rooted tree in which every internal vertex has the same number of children is called a:", options: ["Binary Tree", "Ordered Tree", "m-ary Tree", "Spanning Tree"], answer: 2 },
+            { q: "In a rooted tree, the level of the root is defined as:", options: ["0", "1", "−1", "Depends on height"], answer: 0 },
+            { q: "Which of the following is an application of trees in computer science?", options: ["File systems hierarchy", "Sorting algorithms only", "Network protocols only", "Memory allocation only"], answer: 0 },
+            { q: "A binary search tree (BST) has the property that for every node:", options: ["Left subtree keys < node key < right subtree keys", "All keys are equal", "Left subtree keys > node key", "It must be balanced"], answer: 0 },
+            { q: "Decision trees are primarily used for:", options: ["Sorting numbers", "Making sequential decisions based on attributes", "Compressing data", "Finding shortest path"], answer: 1 },
+            { q: "Huffman coding is used for:", options: ["Data encryption", "Lossless data compression using prefix codes", "Finding minimum spanning tree", "Balancing binary trees"], answer: 1 },
+            { q: "Prefix codes ensure that:", options: ["No codeword is a prefix of another codeword", "All codewords have equal length", "Codes are encrypted", "Decoding is ambiguous"], answer: 0 },
+            { q: "The complexity of comparison-based sorting algorithms in the worst case is at least:", options: ["O(n)", "O(n log n)", "O(n²)", "O(log n)"], answer: 1 },
+            { q: "In the game tree for Tic-Tac-Toe, the leaves represent:", options: ["Possible moves", "Final outcomes of the game", "Root positions only", "Random states"], answer: 1 },
+            { q: "Saturated hydrocarbons can be represented using trees where carbon atoms form:", options: ["Cycles", "A tree structure (acyclic connected graph)", "Complete graphs", "Bipartite graphs only"], answer: 1 },
+            // ===== UNIT IV – BOOLEAN ALGEBRA =====
+            { q: "The Duality Principle in Boolean Algebra states that:", options: ["AND and OR can be interchanged along with 0 and 1", "Only AND can be replaced by OR", "Boolean functions are always unique", "Minimization is impossible"], answer: 0 },
+            { q: "The Sum-of-Products (SOP) expansion expresses a Boolean function as:", options: ["OR of AND terms (minterms)", "AND of OR terms", "Only XOR operations", "A single product term"], answer: 0 },
+            { q: "The Product-of-Sums (POS) form is also known as:", options: ["Minterm expansion", "Maxterm expansion", "Canonical SOP", "Don't care form"], answer: 1 },
+            { q: "A set of Boolean operators is functionally complete if it can:", options: ["Generate only AND and OR", "Express every possible Boolean function", "Minimize circuits automatically", "Work only with 2 variables"], answer: 1 },
+            { q: "Karnaugh Maps (K-Maps) are used for:", options: ["Finding the shortest path in a graph", "Minimizing Boolean functions visually", "Building binary search trees", "Huffman coding"], answer: 1 },
+            { q: "In a K-Map, 'Don't Care' conditions (X) can be:", options: ["Always treated as 0", "Treated as either 0 or 1 to help minimization", "Ignored completely", "Treated only as 1"], answer: 1 },
+            { q: "The Quine-McCluskey method is a tabular technique for:", options: ["Finding minimum spanning trees", "Minimizing Boolean functions systematically", "Constructing Huffman codes", "Balancing decision trees"], answer: 1 },
+            { q: "Which identity is correct in Boolean Algebra?", options: ["x + x = 0", "x · x = x", "x + 1 = 0", "x · 0 = 1"], answer: 1 },
+            { q: "Minimization of circuits aims to reduce:", options: ["The number of variables only", "The number of gates and literals for efficient implementation", "The height of the tree", "The size of the truth table"], answer: 1 },
+            { q: "An ordered rooted tree differs from a rooted tree in that:", options: ["It has no root", "The children of each vertex are ordered (left to right)", "It allows cycles", "All leaves are at the same level"], answer: 1 }
         ];
 
         let currentQuestion = 0;
-        let userAnswers = new Array(40).fill(null);
+        let userAnswers = new Array(20).fill(null);
 
         function startQuiz() {
             document.getElementById('entry-page').style.display = 'none';
@@ -477,14 +509,12 @@
             document.getElementById('q-number').textContent = currentQuestion + 1;
             document.getElementById('question-text').textContent = q.q;
 
-            // Progress bar
-            const percent = ((currentQuestion + 1) / 40 * 100).toFixed(1);
+            const percent = ((currentQuestion + 1) / 20 * 100).toFixed(0);
             document.getElementById('progress-fill').style.width = percent + '%';
             document.getElementById('progress-percent').textContent = percent + '%';
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
-
             q.options.forEach((opt, index) => {
                 const div = document.createElement('div');
                 div.className = 'option' + (userAnswers[currentQuestion] === index ? ' selected' : '');
@@ -496,10 +526,9 @@
                 optionsContainer.appendChild(div);
             });
 
-            // Buttons
             document.getElementById('prev-btn').style.visibility = currentQuestion === 0 ? 'hidden' : 'visible';
-            document.getElementById('next-btn').style.display = currentQuestion === 39 ? 'none' : 'inline-block';
-            document.getElementById('submit-btn').style.display = currentQuestion === 39 ? 'inline-block' : 'none';
+            document.getElementById('next-btn').style.display = currentQuestion === 19 ? 'none' : 'inline-block';
+            document.getElementById('submit-btn').style.display = currentQuestion === 19 ? 'inline-block' : 'none';
         }
 
         function selectOption(index) {
@@ -508,7 +537,7 @@
         }
 
         function nextQuestion() {
-            if (currentQuestion < 39) {
+            if (currentQuestion < 19) {
                 currentQuestion++;
                 showQuestion();
             }
@@ -527,24 +556,32 @@
                 if (ans === questions[i].answer) score++;
             });
 
+            const percentage = ((score / 20) * 100).toFixed(0);
+
             document.getElementById('quiz-page').style.display = 'none';
             document.getElementById('result-page').style.display = 'block';
+            
             document.getElementById('score-value').textContent = score;
+            document.getElementById('marks-text').textContent = score + " / 20";
+            document.getElementById('percent-text').textContent = percentage + "%";
 
             let message = '';
             let icon = '';
 
-            if (score >= 36) {
-                message = "Outstanding! You are a Maths Champion! 🏆";
+            if (score >= 18) {
+                message = "Outstanding Performance! You scored excellent marks. 🏆";
                 icon = "🏆";
-            } else if (score >= 28) {
-                message = "Excellent work! Keep it up! 🌟";
+            } else if (score >= 15) {
+                message = "Very Good! You have scored high marks. Keep it up! 🌟";
                 icon = "🌟";
-            } else if (score >= 20) {
-                message = "Good effort! Practice a bit more. 👍";
+            } else if (score >= 12) {
+                message = "Good Work! You scored decent marks. Practice more to improve. 👍";
                 icon = "👍";
+            } else if (score >= 8) {
+                message = "Average Score. You need more practice on Trees & Boolean Algebra. 📚";
+                icon = "📚";
             } else {
-                message = "Don't worry! Practice makes perfect. 💪";
+                message = "Low Marks. Don't worry! Revise the concepts and try again. 💪";
                 icon = "💪";
             }
 
@@ -554,7 +591,7 @@
 
         function restartQuiz() {
             currentQuestion = 0;
-            userAnswers = new Array(40).fill(null);
+            userAnswers = new Array(20).fill(null);
             document.getElementById('result-page').style.display = 'none';
             document.getElementById('entry-page').style.display = 'block';
         }
